@@ -1,21 +1,39 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,TextInput } from 'react-native';
+import {createAppContainer,createSwitchNavigator} from 'react-navigation';
+import LoginScreen from './screens/LoginScreen';
+import TaskScreen from './screens/TaskScreen';
 
-export default function App() {
-  return (
+export default class App extends React.Component {
+ render(){ 
+    return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <AppContainer/>
+      
     </View>
   );
 }
+}
+const switchNavigator = createSwitchNavigator({
+  LoginScreen: {screen:LoginScreen},
+  TaskScreen: {screen:TaskScreen}
+})
+const AppContainer =  createAppContainer(switchNavigator)
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#A9F3FC',
     alignItems: 'center',
     justifyContent: 'center',
+  }, formTextInput:{
+    width:"75%",
+    height:35,
+    alignSelf:'center',
+    borderColor:'#fff',
+    borderRadius:10,
+    borderWidth:1,
+    marginTop:20,
+    padding:10,
   },
 });
